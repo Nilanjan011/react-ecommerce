@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import {
-   useHistory
+   useHistory,
+   Link
  } from 'react-router-dom';
 
 import myInitObject from './auth';
@@ -50,6 +51,7 @@ export default function Login(){
                     </div>
                 </form>
             </div>
+            <Link to="/my"><h1>MY</h1></Link>
             <input type="submit" value="Login" className="btn btn-danger" onClick={fundata}/>
         </div>
 

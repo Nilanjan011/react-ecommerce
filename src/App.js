@@ -14,6 +14,15 @@ import P_details from './P_details.js';
 import Cart from './Cart.js';
 import ProductAll from './ProductAll.js';
 import Login from './Login.js';
+
+import My from './component/My.js';
+import My1 from './component/My1.js';
+
+//layouts
+import Admin from './layouts/Admin';
+import user from './layouts/user';
+
+
 import { list } from 'cart-localstorage' ;
 
 export const GlobalInfo = createContext();
@@ -29,11 +38,21 @@ const App = () => {
 
    }
 
+   const AppRoute = ({ componet:Componet, layout:Layout, ...rest }) => (
+      <Route {...rest} render={ props => (
+         <Layout><Componet {...props}></Componet> </Layout>
+      )}></Route>
+   )
    return (
       <div className="App">
          <GlobalInfo.Provider value={{color: color,getday:getday}}>
          <Router>     
             <Switch>
+               <AppRoute path="/my" layout={Admin} componet={My} />
+               <AppRoute path="/my1" layout={Admin} componet={My1} />
+               <AppRoute path="/user/layout" layout={user} componet={About} />
+               
+               <Route path="/user" componet={About}></Route>
                <Route exact path="/about">
                   <Header />
                      <About/>
